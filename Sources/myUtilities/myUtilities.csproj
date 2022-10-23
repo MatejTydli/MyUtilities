@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleExceptionSolver.cs" />
     <Compile Include="FormPage.cs" />
     <Compile Include="MyMath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
