@@ -61,7 +61,7 @@ namespace myUtilities
 				}
 				else if (wantNextWhile == "ne" || wantNextWhile == "n")
 				{
-					// App close
+					nextWhile = false;
 				}
 				else
 				{
@@ -128,7 +128,7 @@ namespace myUtilities
 				}
 				else if (wantNextWhile == "n" || wantNextWhile == "no")
 				{
-					// App close
+					nextWhile = false;
 				}
 				else
 				{
