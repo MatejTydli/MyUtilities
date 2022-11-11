@@ -32,6 +32,16 @@ namespace myUtilities
 			}
 		}
 
+		public void changeControls(Control[] controls)
+		{
+			this.Controls = controls;
+
+			foreach (Control control in this.Controls)
+			{
+				control.Tag = this.Tag;
+			}
+		}
+
 		public void LoadToForm(Form form)
 		{
 			bool newForm = true;
@@ -92,6 +102,11 @@ namespace myUtilities
 			form.ShowIcon = FormSavedProperties[form].ShowIcon;
 
 			FormSavedProperties.Remove(form);
+		}
+
+		public void ClearFormMem()
+		{
+			FormSavedProperties.Clear();
 		}
 
 		private struct FormProperties

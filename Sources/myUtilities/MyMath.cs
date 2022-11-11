@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 
 namespace myUtilities
@@ -12,44 +11,68 @@ namespace myUtilities
 		#region speed and distance
 		public static int DistanceBetween2Points(Point x, Point y)
 		{
-			int a = x.X - y.X;
-			int b = x.Y - y.Y;
-			return (int)Math.Round(PythagoreanTheorem(a, b));
+			int result = -1;
+
+			if (x.X - y.X != 0 && x.Y - y.Y != 0)
+			{
+				result = (int)Math.Round(PythagoreanTheorem(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y)));
+			}
+			else if (x.X - y.X == 0)
+			{
+				result = x.Y - y.Y;
+			}
+			else if (x.Y - y.Y == 0)
+			{
+				result = x.X - y.X;
+			}
+
+			return Math.Abs(result);
 		}
 
 		public static double DistanceBetween2Points(PointF x, PointF y)
 		{
-			double a = x.X - y.X;
-			double b = x.Y - y.Y;
-			return PythagoreanTheorem(a, b);
+			double result = -1;
+
+			if (x.X - y.X != 0 && x.Y - y.Y != 0)
+			{
+				result = PythagoreanTheorem(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y));
+			}
+			else if (x.X - y.X == 0)
+			{
+				result = x.Y - y.Y;
+			}
+			else if (x.Y - y.Y == 0)
+			{
+				result = x.X - y.X;
+			}
+
+			return Math.Abs(result);
 		}
 
 		public static Speed2 SpeedBetween2Points(int speed, Point x, Point y)
 		{
-			int a = x.X - y.X;
-			int b = x.Y - y.Y;
-			int c = DistanceBetween2Points(x, y);
-			int d = c / speed;
-			Speed2 speed2 = new Speed2(a / d, b / d);
+			double d = DistanceBetween2Points(x, y) / speed;
+			Speed2F speed2F = new Speed2F((x.X - y.X) / d, (x.Y - y.Y) / d);
+
+			Speed2 speed2;
+			speed2.X = (int)Math.Round(speed2F.X);
+			speed2.Y = (int)Math.Round(speed2F.Y);
 
 			return speed2;
 		}
 
 		public static Speed2F SpeedBetween2Points(int speed, PointF x, PointF y)
 		{
-			double a = x.X - y.X;
-			double b = x.Y - y.Y;
-			double c = DistanceBetween2Points(x, y);
-			double d = c / speed;
-			Speed2F speed2F = new Speed2F(a / d, b / d);
+			double d = DistanceBetween2Points(x, y) / speed;
+			Speed2F speed2F = new Speed2F((x.X - y.X) / d, (x.Y - y.Y) / d);
 
 			return speed2F;
 		}
 
 		public struct Speed2
 		{
-			public readonly int X;
-			public readonly int Y;
+			public int X;
+			public int Y;
 
 			public Speed2(int x, int y)
 			{
@@ -60,8 +83,8 @@ namespace myUtilities
 
 		public struct Speed2F
 		{
-			public readonly double X;
-			public readonly double Y;
+			public double X;
+			public double Y;
 
 			public Speed2F(double x, double y)
 			{
