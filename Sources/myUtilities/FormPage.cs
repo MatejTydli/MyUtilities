@@ -104,11 +104,6 @@ namespace myUtilities
 			FormSavedProperties.Remove(form);
 		}
 
-		public void ClearFormMem()
-		{
-			FormSavedProperties.Clear();
-		}
-
 		private struct FormProperties
 		{
 			public readonly Color BackColor;
