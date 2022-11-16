@@ -49,18 +49,5 @@ namespace myUtilities
 				Console.WriteLine(item);
 			}
 		}
-
-		public static void AddControls(this Form form, Control[] controls)
-		{
-			if (controls.Length == 0)
-			{
-				return;
-			}
-			 
-			foreach (Control control in controls)
-			{
-				form.Controls.Add(control);
-			}
-		}
 	}
 }

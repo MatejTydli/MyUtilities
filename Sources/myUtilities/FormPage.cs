@@ -63,7 +63,7 @@ namespace myUtilities
 			form.Text = this.Text;
 			form.ShowIcon = this.ShowIcon;
 
-			form.AddControls(this.Controls);
+			form.Controls.AddRange(this.Controls);
 		}
 
 		public void LoadToFormInstedCurrent(Form form, FormPage currentPage)
