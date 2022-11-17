@@ -43,16 +43,6 @@ namespace myUtilities
 
 		public void LoadToForm(Form form)
 		{
-			bool newForm = true;
-			foreach (Form Form in Forms)
-			{
-				if (Form == form)
-				{
-					newForm = false;
-					break;
-				}
-			}
-
 			Forms.Add(form);
 			SavedForms.Add(form, new FormProperties(form.BackColor, form.Text, form.ShowIcon));
 
