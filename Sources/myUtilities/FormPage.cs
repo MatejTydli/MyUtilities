@@ -7,7 +7,7 @@ namespace myUtilities
 {
 	public class FormPage
 	{
-		private Dictionary<Form, FormProperties> FormSavedProperties = new Dictionary<Form, FormProperties>();
+		private Dictionary<Form, FormProperties> SavedForms = new Dictionary<Form, FormProperties>();
 		public Control[] Controls { get; private set; }
 		public List<Form> Forms { get; private set; }
 		public object Tag { get; private set; }
@@ -53,11 +53,8 @@ namespace myUtilities
 				}
 			}
 
-			if (newForm)
-			{
-				Forms.Add(form);
-				FormSavedProperties.Add(form, new FormProperties(form.BackColor, form.Text, form.ShowIcon));
-			}
+			Forms.Add(form);
+			SavedForms.Add(form, new FormProperties(form.BackColor, form.Text, form.ShowIcon));
 
 			form.BackColor = this.BackColor;
 			form.Text = this.Text;
@@ -96,11 +93,11 @@ namespace myUtilities
 				}
 			} while (remove);
 
-			form.BackColor = FormSavedProperties[form].BackColor;
-			form.Text = FormSavedProperties[form].Text;
-			form.ShowIcon = FormSavedProperties[form].ShowIcon;
+			form.BackColor = SavedForms[form].BackColor;
+			form.Text = SavedForms[form].Text;
+			form.ShowIcon = SavedForms[form].ShowIcon;
 
-			FormSavedProperties.Remove(form);
+			SavedForms.Remove(form);
 		}
 
 		private struct FormProperties
