@@ -10,35 +10,23 @@ namespace myUtilities
 		private Dictionary<Form, FormProperties> SavedForms = new Dictionary<Form, FormProperties>();
 		public Control[] Controls { get; private set; }
 		public List<Form> Forms { get; private set; }
-		public object Tag { get; private set; }
 		public Color BackColor { get; private set; }
 		public string Text { get; private set; }
 		public bool ShowIcon { get; private set; }
 
-		public FormPage(Control[] controls, Color backColor, string text, bool showIcon, object tag)
+		public FormPage(Control[] controls, Color backColor, string text, bool showIcon)
 		{
 			this.Controls = controls;
-			this.Tag = tag;
 			this.BackColor = backColor;
 			this.Text = text;
 			this.ShowIcon = showIcon;
 
 			Forms = new List<Form>();
-
-			foreach (Control control in this.Controls)
-			{
-				control.Tag = tag;
-			}
 		}
 
-		public void changeControls(Control[] controls)
+		public void ChangeControls(Control[] controls)
 		{
 			this.Controls = controls;
-
-			foreach (Control control in this.Controls)
-			{
-				control.Tag = this.Tag;
-			}
 		}
 
 		public void LoadToForm(Form form)
@@ -61,27 +49,13 @@ namespace myUtilities
 
 		public void RemoveFromForm(Form form)
 		{
-			bool remove;
-			do
+			foreach (var control in Controls.Cast<Control>().ToArray())
 			{
-				remove = false;
-
-				foreach (Control control in form.Controls)
+				if (this.Controls.Contains(control))
 				{
-					if (this.Controls.Contains(control))
-					{
-						form.Controls.Remove(control);
-					}
+					form.Controls.Remove(control);
 				}
-
-				foreach (Control control in form.Controls)
-				{
-					if (this.Controls.Contains(control))
-					{
-						remove = true;
-					}
-				}
-			} while (remove);
+			}
 
 			form.BackColor = SavedForms[form].BackColor;
 			form.Text = SavedForms[form].Text;
