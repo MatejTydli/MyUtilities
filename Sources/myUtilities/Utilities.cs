@@ -26,29 +26,11 @@ namespace myUtilities
 			return false;
 		}
 
-		public static T ShiftArray<T>(ref T[] array)
+		public static T Shift<T>(ref IEnumerable<T> collection)
 		{
-			if (array.Length == 0 || array == null)
-			{
-				throw new Exception("array can not be shifted");
-			}
-
-			T item = array[0];
-
-			if (array.Length == 1)
-			{
-				array = new T[] { };
-				return item;
-			}
-
-			T[] shiftedArray = new T[array.Length - 1];
-			for (int i = 1; i < array.Length; i++)
-			{
-				shiftedArray[i - 1] = array[i];
-			}
-			array = shiftedArray;
-
-			return item;
+			T firstItem = collection.First();
+			collection = collection.Skip(1);
+			return firstItem;
 		}
 
 		public static void WriteCollection<T>(this IEnumerable<T> collection)
