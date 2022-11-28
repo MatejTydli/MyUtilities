@@ -26,7 +26,7 @@ namespace myUtilities
 			return false;
 		}
 
-		public static T Shift<T>(ref T[] array)
+		public static T ShiftArray<T>(ref T[] array)
 		{
 			if (array.Length == 0 || array == null)
 			{
