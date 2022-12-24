@@ -4,12 +4,12 @@ namespace myUtilities
 {
 	public static class ConsoleExceptionSolver
 	{
-		public delegate void DelConsoleProgram();
+		public delegate void DelegConsoleProgram();
 		private static bool nextWhile;
 		private static string wantNextWhile;
 		private static string wantClearConsole;
 
-		public static void ConsoleExceptionSolverCZ(DelConsoleProgram delConsoleProgram)
+		public static void ConsoleExceptionSolverCZ(DelegConsoleProgram delegConsoleProgram)
 		{
 			nextWhile = false;
 			wantNextWhile = "ne";
@@ -19,7 +19,7 @@ namespace myUtilities
 			{
 				try
 				{
-					delConsoleProgram();
+					delegConsoleProgram();
 				}
 				catch (Exception e)
 				{
@@ -76,7 +76,7 @@ namespace myUtilities
 			}
 		}
 
-		public static void ConsoleExceptionSolverEN(DelConsoleProgram delConsoleProgram)
+		public static void ConsoleExceptionSolverEN(DelegConsoleProgram delegConsoleProgram)
 		{
 			nextWhile = false;
 			wantNextWhile = "no";
@@ -86,7 +86,7 @@ namespace myUtilities
 			{
 				try
 				{
-					delConsoleProgram();
+					delegConsoleProgram();
 				}
 				catch (Exception e)
 				{

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,37 +7,28 @@ namespace myUtilities
 	public class FormPage
 	{
 		private Dictionary<Form, FormProperties> SavedForms = new Dictionary<Form, FormProperties>();
-		public Control[] Controls { get; private set; }
-		public List<Form> Forms { get; private set; }
+		public List<Control> Controls { get; private set; }
 		public Color BackColor { get; private set; }
 		public string Text { get; private set; }
 		public bool ShowIcon { get; private set; }
 
-		public FormPage(Control[] controls, Color backColor, string text, bool showIcon)
+		public FormPage(List<Control> controls, Color backColor, string text, bool showIcon)
 		{
 			this.Controls = controls;
 			this.BackColor = backColor;
 			this.Text = text;
 			this.ShowIcon = showIcon;
-
-			Forms = new List<Form>();
-		}
-
-		public void ChangeControls(Control[] controls)
-		{
-			this.Controls = controls;
 		}
 
 		public void LoadToForm(Form form)
 		{
-			Forms.Add(form);
-			SavedForms.Add(form, new FormProperties(form.BackColor, form.Text, form.ShowIcon));
+			this.SavedForms.Add(form, new FormProperties(form.BackColor, form.Text, form.ShowIcon));
 
 			form.BackColor = this.BackColor;
 			form.Text = this.Text;
 			form.ShowIcon = this.ShowIcon;
 
-			form.Controls.AddRange(this.Controls);
+			form.Controls.AddRange(this.Controls.ToArray());
 		}
 
 		public void LoadToFormInstedCurrent(Form form, FormPage currentPage)
@@ -49,19 +39,50 @@ namespace myUtilities
 
 		public void RemoveFromForm(Form form)
 		{
-			foreach (var control in Controls.Cast<Control>().ToArray())
+			foreach (var control in this.Controls)
 			{
-				if (this.Controls.Contains(control))
-				{
-					form.Controls.Remove(control);
-				}
+				form.Controls.Remove(control);
 			}
 
-			form.BackColor = SavedForms[form].BackColor;
-			form.Text = SavedForms[form].Text;
-			form.ShowIcon = SavedForms[form].ShowIcon;
+			form.BackColor = this.SavedForms[form].BackColor;
+			form.Text = this.SavedForms[form].Text;
+			form.ShowIcon = this.SavedForms[form].ShowIcon;
 
-			SavedForms.Remove(form);
+			this.SavedForms.Remove(form);
+		}
+
+		public void AddControl(Control control)
+		{
+			var newControls = this.Controls;
+			newControls.Add(control);
+			this.ChangeControls(newControls);
+		}
+
+		public void AddControls(List<Control> controls)
+		{
+			var newControls = this.Controls;
+			newControls.AddRange(controls);
+			this.ChangeControls(newControls);
+		}
+
+		public void RemoveControl(Control control)
+		{
+			var newControls = this.Controls;
+			newControls.Remove(control);
+			this.ChangeControls(newControls);
+		}
+
+		public void ChangeControls(List<Control> newControls)
+		{
+			foreach (var savedForm in this.SavedForms.Keys)
+			{
+				foreach (var control in this.Controls)
+				{
+					savedForm.Controls.Remove(control);
+				}
+
+				savedForm.Controls.AddRange(newControls.ToArray());
+			}
 		}
 
 		private struct FormProperties

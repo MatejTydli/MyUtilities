@@ -15,7 +15,7 @@ namespace myUtilities
 
 			if (x.X - y.X != 0 && x.Y - y.Y != 0)
 			{
-				result = (int)Math.Round(PythagoreanTheorem(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y)));
+				result = (int)Math.Round(Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y)));
 			}
 			else if (x.X - y.X == 0)
 			{
@@ -35,7 +35,7 @@ namespace myUtilities
 
 			if (x.X - y.X != 0 && x.Y - y.Y != 0)
 			{
-				result = PythagoreanTheorem(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y));
+				result = Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y));
 			}
 			else if (x.X - y.X == 0)
 			{
@@ -95,7 +95,7 @@ namespace myUtilities
 		#endregion
 
 		#region other my math functions 
-		public static double PythagoreanTheorem(double a, double b)
+		public static double Pythagor(double a, double b)
 		{
 			return Math.Sqrt(a * a + b * b);
 		}
@@ -117,6 +117,7 @@ namespace myUtilities
 			{
 				result *= i;
 			}
+
 			return result;
 		}
 		#endregion
