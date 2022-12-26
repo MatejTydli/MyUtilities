@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace myUtilities
@@ -73,6 +74,22 @@ namespace myUtilities
 				result.Add(new List<T>(combo));
 			});
 			return result;
+		}
+
+		public static Image RotateImage(Image bmp, float angle)
+		{
+			float height = bmp.Height;
+			float width = bmp.Width;
+			int hypotenuse = Convert.ToInt32(Math.Floor(Math.Sqrt(height * height + width * width)));
+			Bitmap rotatedImage = new Bitmap(hypotenuse, hypotenuse);
+			using (Graphics g = Graphics.FromImage(rotatedImage))
+			{
+				g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2);
+				g.RotateTransform(angle);
+				g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2);
+				g.DrawImage(bmp, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
+			}
+			return rotatedImage;
 		}
 	}
 }
