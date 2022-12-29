@@ -38,35 +38,26 @@ namespace myUtilities
 		{
 			foreach (T item in collection)
 			{
-				if (collection.Last().Equals(item))
-				{
-					Console.Write(item);
-				}
-				else
-				{
-					Console.Write(item + ", ");
-				}
+				if (collection.Last().Equals(item)) Console.Write(item);
+				else Console.Write(item + ", ");
 			}
 		}
 
 		public static void WriteLinesCollection<T>(this IEnumerable<T> collection)
 		{
-			foreach (T item in collection)
-			{
-				Console.WriteLine(item);
-			}
+			foreach (T item in collection) Console.WriteLine(item);
 		}
 
 		public static List<List<T>> GetAllCombos<T>(this List<T> list)
 		{
-			List<List<T>> result = new List<List<T>>();
+			var result = new List<List<T>>();
 
 			result.Add(new List<T>());
 			result.Last().Add(list[0]);
 			if (list.Count == 1)
 				return result;
 
-			List<List<T>> tailCombos = GetAllCombos(list.Skip(1).ToList());
+			var tailCombos = GetAllCombos(list.Skip(1).ToList());
 			tailCombos.ForEach(combo =>
 			{
 				result.Add(new List<T>(combo));
@@ -76,20 +67,25 @@ namespace myUtilities
 			return result;
 		}
 
-		public static Image RotateImage(Image bmp, float angle)
+		public static Image RotateImage(Image image, float angle)
 		{
-			float height = bmp.Height;
-			float width = bmp.Width;
-			int hypotenuse = Convert.ToInt32(Math.Floor(Math.Sqrt(height * height + width * width)));
+			float height = image.Height;
+			float width = image.Width;
+			int hypotenuse = (int)Math.Floor(MyMath.Pythagor(width, height));
 			Bitmap rotatedImage = new Bitmap(hypotenuse, hypotenuse);
 			using (Graphics g = Graphics.FromImage(rotatedImage))
 			{
 				g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2);
 				g.RotateTransform(angle);
 				g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2);
-				g.DrawImage(bmp, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
+				g.DrawImage(image, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
 			}
 			return rotatedImage;
+		}
+
+		public static Image RotateImage(Image image, double angle)
+		{
+			return RotateImage(image, (float)angle);
 		}
 	}
 }
