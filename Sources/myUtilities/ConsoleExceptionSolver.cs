@@ -46,27 +46,12 @@ namespace myUtilities
 					Console.Write("Chcete vymazat vsechen text na konzoli? (ano/ne): ");
 					wantClearConsole = Console.ReadLine().ToLower();
 
-					if (wantClearConsole == "ano" || wantClearConsole == "a")
-					{
-						Console.Clear();
-					}
-					else if (wantClearConsole == "ne" || wantClearConsole == "n")
-					{
-						Console.WriteLine();
-					}
-					else
-					{
-						throw new Exception("Spatne zadany vztup.");
-					}
+					if (wantClearConsole == "ano" || wantClearConsole == "a") Console.Clear();
+					else if (wantClearConsole == "ne" || wantClearConsole == "n") Console.WriteLine();
+					else throw new Exception("Spatne zadany vztup.");
 				}
-				else if (wantNextWhile == "ne" || wantNextWhile == "n")
-				{
-					nextWhile = false;
-				}
-				else
-				{
-					throw new Exception("Spatne zadany vztup.");
-				}
+				else if (wantNextWhile == "ne" || wantNextWhile == "n") nextWhile = false;
+				else throw new Exception("Spatne zadany vztup.");
 			}
 			catch (Exception e)
 			{
@@ -113,27 +98,12 @@ namespace myUtilities
 					Console.Write("Want clear the console? (yes/no): ");
 					wantClearConsole = Console.ReadLine().ToLower();
 
-					if (wantClearConsole == "yes" || wantClearConsole == "y")
-					{
-						Console.Clear();
-					}
-					else if (wantClearConsole == "n" || wantClearConsole == "no")
-					{
-						Console.WriteLine();
-					}
-					else
-					{
-						throw new Exception("incorrectly entered input.");
-					}
+					if (wantClearConsole == "yes" || wantClearConsole == "y") Console.Clear();
+					else if (wantClearConsole == "n" || wantClearConsole == "no") Console.WriteLine();
+					else throw new Exception("incorrectly entered input.");
 				}
-				else if (wantNextWhile == "n" || wantNextWhile == "no")
-				{
-					nextWhile = false;
-				}
-				else
-				{
-					throw new Exception("Incorrectly entered input");
-				}
+				else if (wantNextWhile == "n" || wantNextWhile == "no") nextWhile = false;
+				else throw new Exception("Incorrectly entered input");
 			}
 			catch (Exception e)
 			{

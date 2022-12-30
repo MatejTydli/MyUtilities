@@ -39,10 +39,7 @@ namespace myUtilities
 
 		public void RemoveFromForm(Form form)
 		{
-			foreach (var control in this.Controls)
-			{
-				form.Controls.Remove(control);
-			}
+			foreach (var control in this.Controls) form.Controls.Remove(control);
 
 			form.BackColor = this.SavedForms[form].BackColor;
 			form.Text = this.SavedForms[form].Text;
@@ -76,11 +73,7 @@ namespace myUtilities
 		{
 			foreach (var savedForm in this.SavedForms.Keys)
 			{
-				foreach (var control in this.Controls)
-				{
-					savedForm.Controls.Remove(control);
-				}
-
+				foreach (var control in this.Controls) savedForm.Controls.Remove(control);
 				savedForm.Controls.AddRange(newControls.ToArray());
 			}
 		}

@@ -14,17 +14,9 @@ namespace myUtilities
 			int result = -1;
 
 			if (x.X - y.X != 0 && x.Y - y.Y != 0)
-			{
 				result = (int)Math.Round(Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y)));
-			}
-			else if (x.X - y.X == 0)
-			{
-				result = x.Y - y.Y;
-			}
-			else if (x.Y - y.Y == 0)
-			{
-				result = x.X - y.X;
-			}
+			else if (x.X - y.X == 0) result = x.Y - y.Y;
+			else if (x.Y - y.Y == 0) result = x.X - y.X;
 
 			return Math.Abs(result);
 		}
@@ -34,17 +26,9 @@ namespace myUtilities
 			double result = -1;
 
 			if (x.X - y.X != 0 && x.Y - y.Y != 0)
-			{
 				result = Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y));
-			}
-			else if (x.X - y.X == 0)
-			{
-				result = x.Y - y.Y;
-			}
-			else if (x.Y - y.Y == 0)
-			{
-				result = x.X - y.X;
-			}
+			else if (x.X - y.X == 0) result = x.Y - y.Y;
+			else if (x.Y - y.Y == 0) result = x.X - y.X;
 
 			return Math.Abs(result);
 		}
@@ -76,8 +60,8 @@ namespace myUtilities
 
 			public Speed2(int x, int y)
 			{
-				X = x;
-				Y = y;
+				this.X = x;
+				this.Y = y;
 			}
 		}
 
@@ -88,8 +72,8 @@ namespace myUtilities
 
 			public Speed2F(double x, double y)
 			{
-				X = x;
-				Y = y;
+				this.X = x;
+				this.Y = y;
 			}
 		}
 		#endregion
@@ -113,10 +97,7 @@ namespace myUtilities
 		public static int Factorial(int n)
 		{
 			int result = 1;
-			for (int i = 1; i <= n; i++)
-			{
-				result *= i;
-			}
+			for (int i = 1; i <= n; i++) result *= i;
 
 			return result;
 		}

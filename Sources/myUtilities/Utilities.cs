@@ -54,8 +54,7 @@ namespace myUtilities
 
 			result.Add(new List<T>());
 			result.Last().Add(list[0]);
-			if (list.Count == 1)
-				return result;
+			if (list.Count == 1) return result;
 
 			var tailCombos = GetAllCombos(list.Skip(1).ToList());
 			tailCombos.ForEach(combo =>
@@ -71,15 +70,15 @@ namespace myUtilities
 		{
 			float height = image.Height;
 			float width = image.Width;
-			int hypotenuse = (int)Math.Floor(MyMath.Pythagor(width, height));
-			Bitmap rotatedImage = new Bitmap(hypotenuse, hypotenuse);
-			using (Graphics g = Graphics.FromImage(rotatedImage))
-			{
-				g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2);
-				g.RotateTransform(angle);
-				g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2);
-				g.DrawImage(image, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
-			}
+			var hypotenuse = (int)Math.Floor(MyMath.Pythagor(width, height));
+			var rotatedImage = new Bitmap(hypotenuse, hypotenuse);
+			Graphics g = Graphics.FromImage(rotatedImage);
+
+			g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2);
+			g.RotateTransform(angle);
+			g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2);
+			g.DrawImage(image, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
+
 			return rotatedImage;
 		}
 
