@@ -11,32 +11,18 @@ namespace myUtilities
 		#region speed and distance
 		public static int DistanceBetween2Points(Point x, Point y)
 		{
-			var result = -1;
-
-			if (x.X - y.X != 0 && x.Y - y.Y != 0)
-				result = (int)Math.Round(Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y)));
-			else if (x.X - y.X == 0) result = x.Y - y.Y;
-			else if (x.Y - y.Y == 0) result = x.X - y.X;
-
-			return Math.Abs(result);
+			return (int)Math.Round(Math.Abs(Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y))));
 		}
 
 		public static double DistanceBetween2Points(PointF x, PointF y)
 		{
-			double result = -1;
-
-			if (x.X - y.X != 0 && x.Y - y.Y != 0)
-				result = Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y));
-			else if (x.X - y.X == 0) result = x.Y - y.Y;
-			else if (x.Y - y.Y == 0) result = x.X - y.X;
-
-			return Math.Abs(result);
+			return Math.Abs(Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y)));
 		}
 
 		public static Speed2 SpeedBetween2Points(int speed, Point x, Point y)
 		{
-			double d = DistanceBetween2Points(x, y) / speed;
-			var speed2 = new Speed2((x.X - y.X) / (int)Math.Round(d), (x.Y - y.Y) / (int)Math.Round(d));
+			var d = (int)Math.Round((double)DistanceBetween2Points(x,y) / speed);
+			var speed2 = new Speed2((y.X - x.X) / d, (y.Y - x.Y) / d);
 			
 			return speed2;
 		}
@@ -44,7 +30,7 @@ namespace myUtilities
 		public static Speed2F SpeedBetween2Points(int speed, PointF x, PointF y)
 		{
 			double d = DistanceBetween2Points(x, y) / speed;
-			var speed2F = new Speed2F((x.X - y.X) / d, (x.Y - y.Y) / d);
+			var speed2F = new Speed2F((y.X - x.X) / d, (y.Y - x.Y) / d);
 
 			return speed2F;
 		}
