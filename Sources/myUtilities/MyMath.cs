@@ -11,7 +11,7 @@ namespace myUtilities
 		#region speed and distance
 		public static int DistanceBetween2Points(Point x, Point y)
 		{
-			int result = -1;
+			var result = -1;
 
 			if (x.X - y.X != 0 && x.Y - y.Y != 0)
 				result = (int)Math.Round(Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y)));
@@ -36,19 +36,15 @@ namespace myUtilities
 		public static Speed2 SpeedBetween2Points(int speed, Point x, Point y)
 		{
 			double d = DistanceBetween2Points(x, y) / speed;
-			Speed2F speed2F = new Speed2F((x.X - y.X) / d, (x.Y - y.Y) / d);
-
-			Speed2 speed2;
-			speed2.X = (int)Math.Round(speed2F.X);
-			speed2.Y = (int)Math.Round(speed2F.Y);
-
+			var speed2 = new Speed2((x.X - y.X) / (int)Math.Round(d), (x.Y - y.Y) / (int)Math.Round(d));
+			
 			return speed2;
 		}
 
 		public static Speed2F SpeedBetween2Points(int speed, PointF x, PointF y)
 		{
 			double d = DistanceBetween2Points(x, y) / speed;
-			Speed2F speed2F = new Speed2F((x.X - y.X) / d, (x.Y - y.Y) / d);
+			var speed2F = new Speed2F((x.X - y.X) / d, (x.Y - y.Y) / d);
 
 			return speed2F;
 		}
@@ -96,8 +92,8 @@ namespace myUtilities
 
 		public static int Factorial(int n)
 		{
-			int result = 1;
-			for (int i = 1; i <= n; i++) result *= i;
+			var result = 1;
+			for (var i = 1; i <= n; i++) result *= i;
 
 			return result;
 		}
