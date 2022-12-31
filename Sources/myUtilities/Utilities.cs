@@ -50,13 +50,13 @@ namespace myUtilities
 
 		public static List<List<T>> GetAllCombos<T>(this List<T> list)
 		{
-			var result = new List<List<T>>();
+			List<List<T>> result = new List<List<T>>();
 
 			result.Add(new List<T>());
 			result.Last().Add(list[0]);
 			if (list.Count == 1) return result;
 
-			var tailCombos = GetAllCombos(list.Skip(1).ToList());
+			List<List<T>> tailCombos = GetAllCombos(list.Skip(1).ToList());
 			tailCombos.ForEach(combo =>
 			{
 				result.Add(new List<T>(combo));
@@ -70,8 +70,8 @@ namespace myUtilities
 		{
 			float height = image.Height;
 			float width = image.Width;
-			var hypotenuse = (int)Math.Floor(MyMath.Pythagor(width, height));
-			var rotatedImage = new Bitmap(hypotenuse, hypotenuse);
+			int hypotenuse = (int)Math.Floor(MyMath.Pythagor(width, height));
+			Bitmap rotatedImage = new Bitmap(hypotenuse, hypotenuse);
 			Graphics g = Graphics.FromImage(rotatedImage);
 
 			g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2);

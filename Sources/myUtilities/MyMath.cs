@@ -21,8 +21,8 @@ namespace myUtilities
 
 		public static Speed2 SpeedBetween2Points(int speed, Point x, Point y)
 		{
-			var d = (int)Math.Round((double)DistanceBetween2Points(x,y) / speed);
-			var speed2 = new Speed2((y.X - x.X) / d, (y.Y - x.Y) / d);
+			int d = (int)Math.Round((double)DistanceBetween2Points(x,y) / speed);
+			Speed2 speed2 = new Speed2((y.X - x.X) / d, (y.Y - x.Y) / d);
 			
 			return speed2;
 		}
@@ -30,7 +30,7 @@ namespace myUtilities
 		public static Speed2F SpeedBetween2Points(int speed, PointF x, PointF y)
 		{
 			double d = DistanceBetween2Points(x, y) / speed;
-			var speed2F = new Speed2F((y.X - x.X) / d, (y.Y - x.Y) / d);
+			Speed2F speed2F = new Speed2F((y.X - x.X) / d, (y.Y - x.Y) / d);
 
 			return speed2F;
 		}
