@@ -1,27 +1,23 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Utils
 {
-	public static class MyMath
+	public static class Math
 	{
-		#region constants
-		#endregion
-
 		#region speed and distance
 		public static int DistanceBetween2Points(Point x, Point y)
 		{
-			return (int)Math.Round(Math.Abs(Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y))));
+			return (int)System.Math.Round(System.Math.Abs(Pythagor(System.Math.Abs(x.X - y.X), System.Math.Abs(x.Y - y.Y))));
 		}
 
 		public static double DistanceBetween2Points(PointF x, PointF y)
 		{
-			return Math.Abs(Pythagor(Math.Abs(x.X - y.X), Math.Abs(x.Y - y.Y)));
+			return System.Math.Abs(Pythagor(System.Math.Abs(x.X - y.X), System.Math.Abs(x.Y - y.Y)));
 		}
 
 		public static Speed2 SpeedBetween2Points(int speed, Point x, Point y)
 		{
-			int d = (int)Math.Round((double)DistanceBetween2Points(x,y) / speed);
+			int d = (int)System.Math.Round((double)DistanceBetween2Points(x,y) / speed);
 			Speed2 speed2 = new Speed2((y.X - x.X) / d, (y.Y - x.Y) / d);
 			
 			return speed2;
@@ -60,20 +56,20 @@ namespace Utils
 		}
 		#endregion
 
-		#region other my math functions 
+		#region other my System.Math functions 
 		public static double Pythagor(double a, double b)
 		{
-			return Math.Sqrt(a * a + b * b);
+			return System.Math.Sqrt(a * a + b * b);
 		}
 
 		public static int Clamp(int min, int max, int value)
 		{
-			return Math.Max(min, Math.Min(value, max));
+			return System.Math.Max(min, System.Math.Min(value, max));
 		}
 
 		public static double Clamp(double min, double max, double value)
 		{
-			return Math.Max(min, Math.Min(value, max));
+			return System.Math.Max(min, System.Math.Min(value, max));
 		}
 
 		public static int Factorial(int n)

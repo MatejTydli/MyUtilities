@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Utils
+namespace Utils.Console
 {
 	public static class ConsoleExceptionSolver
 	{
@@ -23,8 +23,8 @@ namespace Utils
 				}
 				catch (Exception e)
 				{
-					Console.WriteLine("\nDoslo k neocekavane vyjimce a spadnuti programu, muze byt zpusobeno spatne zadanym vstupem.");
-					Console.WriteLine("Chybova hlazka (nekdy v anglictine): " + e.Message);
+					System.Console.WriteLine("\nDoslo k neocekavane vyjimce a spadnuti programu, muze byt zpusobeno spatne zadanym vstupem.");
+					System.Console.WriteLine("Chybova hlazka (nekdy v anglictine): " + e.Message);
 				}
 				finally
 				{
@@ -37,17 +37,17 @@ namespace Utils
 		{
 			try
 			{
-				Console.Write("\nChcete provest dalsi vypocet? (ano/ne): ");
-				wantNextWhile = Console.ReadLine().ToLower();
+				System.Console.Write("\nChcete provest dalsi vypocet? (ano/ne): ");
+				wantNextWhile = System.Console.ReadLine().ToLower();
 
 				if (wantNextWhile == "ano" || wantNextWhile == "a")
 				{
 					nextWhile = true;
-					Console.Write("Chcete vymazat vsechen text na konzoli? (ano/ne): ");
-					wantClearConsole = Console.ReadLine().ToLower();
+					System.Console.Write("Chcete vymazat vsechen text na konzoli? (ano/ne): ");
+					wantClearConsole = System.Console.ReadLine().ToLower();
 
-					if (wantClearConsole == "ano" || wantClearConsole == "a") Console.Clear();
-					else if (wantClearConsole == "ne" || wantClearConsole == "n") Console.WriteLine();
+					if (wantClearConsole == "ano" || wantClearConsole == "a") System.Console.Clear();
+					else if (wantClearConsole == "ne" || wantClearConsole == "n") System.Console.WriteLine();
 					else throw new Exception("Spatne zadany vztup.");
 				}
 				else if (wantNextWhile == "ne" || wantNextWhile == "n") nextWhile = false;
@@ -55,8 +55,8 @@ namespace Utils
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("\nDoslo k neocekavane vyjimce a spadnuti programu, muze byt zpusobeno spatne zadanym vstupem.");
-				Console.WriteLine("Chybova hlazka (nekdy v anglictine): " + e.Message);
+				System.Console.WriteLine("\nDoslo k neocekavane vyjimce a spadnuti programu, muze byt zpusobeno spatne zadanym vstupem.");
+				System.Console.WriteLine("Chybova hlazka (nekdy v anglictine): " + e.Message);
 				finallyCZ();
 			}
 		}
@@ -75,8 +75,8 @@ namespace Utils
 				}
 				catch (Exception e)
 				{
-					Console.WriteLine("\nAn unexpected exception occurred and the program crashed, which may have been caused by an incorrectly entered input.");
-					Console.WriteLine("Exception message: " + e.Message);
+					System.Console.WriteLine("\nAn unexpected exception occurred and the program crashed, which may have been caused by an incorrectly entered input.");
+					System.Console.WriteLine("Exception message: " + e.Message);
 				}
 				finally
 				{
@@ -89,17 +89,17 @@ namespace Utils
 		{
 			try
 			{
-				Console.Write("\nWant another calculation? (yes/no): ");
-				wantNextWhile = Console.ReadLine().ToLower();
+				System.Console.Write("\nWant another calculation? (yes/no): ");
+				wantNextWhile = System.Console.ReadLine().ToLower();
 
 				if (wantNextWhile == "yes" || wantNextWhile == "y")
 				{
 					nextWhile = true;
-					Console.Write("Want clear the console? (yes/no): ");
-					wantClearConsole = Console.ReadLine().ToLower();
+					System.Console.Write("Want clear the console? (yes/no): ");
+					wantClearConsole = System.Console.ReadLine().ToLower();
 
-					if (wantClearConsole == "yes" || wantClearConsole == "y") Console.Clear();
-					else if (wantClearConsole == "n" || wantClearConsole == "no") Console.WriteLine();
+					if (wantClearConsole == "yes" || wantClearConsole == "y") System.Console.Clear();
+					else if (wantClearConsole == "n" || wantClearConsole == "no") System.Console.WriteLine();
 					else throw new Exception("incorrectly entered input.");
 				}
 				else if (wantNextWhile == "n" || wantNextWhile == "no") nextWhile = false;
@@ -107,8 +107,8 @@ namespace Utils
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("\nAn unexpected exception occurred and the program crashed, which may have been caused by an incorrectly entered input.");
-				Console.WriteLine("Exception message: " + e.Message);
+				System.Console.WriteLine("\nAn unexpected exception occurred and the program crashed, which may have been caused by an incorrectly entered input.");
+				System.Console.WriteLine("Exception message: " + e.Message);
 				finallyCZ();
 			}
 		}
