@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace myUtilities
+namespace Utils
 {
 	public static class MyMath
 	{

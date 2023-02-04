@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace myUtilities
+namespace Utils
 {
 	public class FormPage
 	{

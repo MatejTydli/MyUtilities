@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace myUtilities
+namespace Utils
 {
-	public static class Utilities
+	public static class Utils
 	{
 		public static bool FindIndexOfItem<T>(this IEnumerable<T> collection, T itemToFind, out int index)
 		{

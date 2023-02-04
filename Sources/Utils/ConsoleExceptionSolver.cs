@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace myUtilities
+namespace Utils
 {
 	public static class ConsoleExceptionSolver
 	{
