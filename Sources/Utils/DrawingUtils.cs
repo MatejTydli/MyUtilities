@@ -2,7 +2,7 @@ using System.Drawing;
 
 namespace Utils.Drawing
 {
-	public static class FormUtils
+	public static class DrawingUtils
 	{
 		public static Image RotateImage(Image image, float angle)
 		{
